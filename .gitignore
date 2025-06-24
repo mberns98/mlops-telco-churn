@@ -23,6 +23,7 @@ poetry.lock
 # ML stuff
 /data/
 /models/
+!/models/*.py
 /output/
 /mlruns/
 /mlflow/
