@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 def read_new_data(path: str) -> pd.DataFrame:
     "Reads the new data and creates a dataframe"
@@ -141,3 +142,16 @@ def one_hot_encode(df: pd.DataFrame) -> pd.DataFrame:
     ]
     
     return pd.get_dummies(df, columns=cols_to_encode, dtype=int)
+
+def split_data(df: pd.DataFrame, target_col: str):
+    """
+    Splits the input DataFrame into training, validation, and test sets with stratified sampling.
+    """
+
+    X = df.drop(columns=[target_col])
+    y = df[target_col]
+
+    X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=0.15, random_state=42, stratify=y)
+    X_train, X_val, y_train, y_val = train_test_split(X_temp, y_temp, test_size=0.15, random_state=42, stratify=y_temp)
+
+    return X_train, X_val, X_test, y_train, y_val, y_test
