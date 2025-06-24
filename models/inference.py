@@ -1,4 +1,4 @@
-from .evaluation_utils import evaluate_classification, plot_confusion_matrix
+from models.evaluation_utils import evaluate_classification, plot_confusion_matrix
 
 def predict_and_evaluate(model, X_test, y_test, labels=None, verbose=True):
     """
