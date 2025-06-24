@@ -12,7 +12,7 @@ def convert_target(df):
 
 def main():
     # 🧪 Leer y procesar
-    df_raw = prep.read_new_data("data/Telco-Customer-Churn.xlsx")
+    df_raw = prep.read_new_data("data/Telco_Customer_Churn.xlsx")
 
     df_clean = (
         df_raw
