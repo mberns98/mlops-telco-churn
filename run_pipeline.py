@@ -1,5 +1,5 @@
 import sys
-sys.path.append('./')
+sys.path.append('./') # Ensures local modules in 'src/' can be imported
 
 from src.data.preprocessing import (
     read_new_data,
@@ -13,6 +13,15 @@ from src.data.preprocessing import (
 )
 
 def run_pipeline(path: str):
+    """
+    Runs the full preprocessing pipeline on the input data.
+    
+    Args:
+        path (str): Path to the raw Excel file.
+    
+    Returns:
+        None.
+    """
     df = (
         read_new_data(path)
         .pipe(drop_useless_columns)
@@ -26,9 +35,9 @@ def run_pipeline(path: str):
     print(df.head()) 
 
 if __name__ == "__main__":
-
+    # Check if the script was run with the required file path argument
     if len(sys.argv) < 2:
         print("Usage: poetry run python run_pipeline.py <path_to_excel>")
     else:
-        path = sys.argv[1]
-        run_pipeline(path)
+        path = sys.argv[1] # Extract the input file path
+        run_pipeline(path) # Run the preprocessing pipeline
